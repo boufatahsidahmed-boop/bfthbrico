@@ -1,224 +1,166 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BFTH BRICO | خردوات عامة</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      background: #f5f6f8;
-      color: #222;
-    }
-
-    header {
-      background: #0b2d5c;
-      color: white;
-      padding: 18px;
-      text-align: center;
-    }
-
-    header h1 {
-      font-size: 30px;
-      margin-bottom: 5px;
-    }
-
-    header p {
-      color: #f5a623;
-      font-size: 15px;
-    }
-
-    .hero {
-      background: white;
-      padding: 35px 20px;
-      text-align: center;
-    }
-
-    .hero h2 {
-      font-size: 28px;
-      color: #0b2d5c;
-      margin-bottom: 12px;
-    }
-
-    .hero p {
-      color: #555;
-      margin-bottom: 20px;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #f5a623;
-      color: #111;
-      padding: 13px 25px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .section {
-      padding: 25px 15px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .section h2 {
-      text-align: center;
-      color: #0b2d5c;
-      margin-bottom: 20px;
-    }
-
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-
-    .category {
-      background: white;
-      padding: 20px 10px;
-      text-align: center;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
-      font-weight: bold;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
-
-    .product {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
-    }
-
-    .product img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      background: #eee;
-    }
-
-    .product-content {
-      padding: 12px;
-    }
-
-    .product h3 {
-      font-size: 17px;
-      margin-bottom: 8px;
-    }
-
-    .price {
-      color: #e58b00;
-      font-size: 19px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .order {
-      display: block;
-      text-align: center;
-      background: #25D366;
-      color: white;
-      padding: 10px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    footer {
-      margin-top: 30px;
-      background: #0b2d5c;
-      color: white;
-      text-align: center;
-      padding: 25px 15px;
-    }
-
-    footer strong {
-      color: #f5a623;
-    }
-
-    @media (min-width: 700px) {
-      .categories {
-        grid-template-columns: repeat(4, 1fr);
-      }
-
-      .products {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BFTH BRICO | متجر الخردوات</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f6f8;color:#172033}
+header{background:#0b1f3a;color:#fff;padding:18px 16px;position:sticky;top:0;z-index:10}
+.header{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.logo{font-size:25px;font-weight:800}.logo span{color:#f39a16}
+.cart-btn{border:0;background:#f39a16;color:#111;padding:11px 16px;border-radius:10px;font-weight:bold;font-size:16px}
+.hero{background:linear-gradient(135deg,#0b1f3a,#174d86);color:#fff;padding:42px 18px;text-align:center}
+.hero h1{margin:0 0 10px;font-size:34px}.hero p{margin:0;font-size:17px}
+.container{max-width:1100px;margin:25px auto;padding:0 15px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 18px #00000012}
+.card img{width:100%;height:210px;object-fit:cover;background:#eee}
+.card-body{padding:15px}.card h3{margin:0 0 8px}.price{font-size:21px;font-weight:bold;color:#e58a00;margin:8px 0 13px}
+.add{width:100%;border:0;background:#0b1f3a;color:#fff;padding:12px;border-radius:9px;font-size:16px;font-weight:bold}
+.empty{text-align:center;padding:25px;color:#777}
+.modal{display:none;position:fixed;inset:0;background:#0008;z-index:20;padding:15px;overflow:auto}
+.box{background:#fff;max-width:600px;margin:25px auto;border-radius:18px;padding:20px}
+.close{float:left;border:0;background:#eee;border-radius:50%;width:35px;height:35px;font-size:20px}
+.order-item{display:flex;justify-content:space-between;border-bottom:1px solid #eee;padding:10px 0}
+.total{font-size:21px;font-weight:bold;margin:18px 0}
+input,select,textarea{width:100%;padding:13px;margin:7px 0 12px;border:1px solid #ddd;border-radius:9px;font-size:16px}
+.submit{width:100%;background:#20a05a;color:#fff;border:0;padding:14px;border-radius:10px;font-size:17px;font-weight:bold}
+.note{font-size:13px;color:#777}
+footer{text-align:center;padding:30px;color:#777}
+</style>
 </head>
-
 <body>
 
 <header>
-  <h1>BFTH BRICO</h1>
-  <p>خردوات عامة • أدوات • تجهيزات</p>
+<div class="header">
+<div class="logo">BFTH <span>BRICO</span></div>
+<button class="cart-btn" onclick="openCart()">🛒 السلة (<span id="count">0</span>)</button>
+</div>
 </header>
 
 <section class="hero">
-  <h2>مرحبا بكم في BFTH BRICO</h2>
-  <p>كل ما تحتاجه من الخردوات والأدوات في مكان واحد</p>
-  <a class="btn" href="#products">تصفح المنتجات</a>
+<h1>BFTH BRICO</h1>
+<p>خردوات وأدوات متنوعة — اطلب الآن والتوصيل إلى 69 ولاية</p>
 </section>
 
-<section class="section">
-  <h2>الأقسام</h2>
+<main class="container">
+<h2>منتجاتنا</h2>
+<div id="products" class="products"></div>
+</main>
 
-  <div class="categories">
-    <div class="category">🔧 العدد والأدوات</div>
-    <div class="category">🚪 مستلزمات الأبواب</div>
-    <div class="category">💡 الكهرباء والإنارة</div>
-    <div class="category">🏠 مستلزمات المنزل</div>
-  </div>
-</section>
+<div id="cartModal" class="modal">
+<div class="box">
+<button class="close" onclick="closeCart()">×</button>
+<h2>سلة المشتريات</h2>
+<div id="cartItems"></div>
+<div class="total">المجموع: <span id="total">0</span> دج</div>
 
-<section class="section" id="products">
-  <h2>منتجاتنا</h2>
+<h2>معلومات الطلب</h2>
+<form onsubmit="sendOrder(event)">
+<label>الاسم واللقب</label>
+<input id="name" required placeholder="اكتب اسمك الكامل">
 
-  <div class="products">
+<label>رقم الهاتف</label>
+<input id="phone" required type="tel" placeholder="05xxxxxxxx">
 
-    <div class="product">
-      <img src="https://via.placeholder.com/400x300?text=BFTH+BRICO">
-      <div class="product-content">
-        <h3>منتج تجريبي</h3>
-        <div class="price">0 دج</div>
-        <a class="order" href="https://wa.me/213774334689">
-          اطلب عبر واتساب
-        </a>
-      </div>
-    </div>
+<label>الولاية</label>
+<select id="wilaya" required>
+<option value="">اختر الولاية</option>
+<option>الجزائر</option><option>البليدة</option><option>المدية</option>
+<option>تيبازة</option><option>بومرداس</option><option>وهران</option>
+<option>قسنطينة</option><option>سطيف</option><option>باتنة</option>
+<option>تلمسان</option><option>عنابة</option><option>بجاية</option>
+<option>تيزي وزو</option><option>الجلفة</option><option>الأغواط</option>
+<option>الشلف</option><option>بسكرة</option><option>الوادي</option>
+<option>ورقلة</option><option>غرداية</option><option>أخرى</option>
+</select>
 
-    <div class="product">
-      <img src="https://via.placeholder.com/400x300?text=BFTH+BRICO">
-      <div class="product-content">
-        <h3>منتج تجريبي</h3>
-        <div class="price">0 دج</div>
-        <a class="order" href="https://wa.me/213774334689">
-          اطلب عبر واتساب
-        </a>
-      </div>
-    </div>
+<label>العنوان</label>
+<textarea id="address" required placeholder="البلدية، الحي، العنوان..."></textarea>
 
-  </div>
-</section>
+<button class="submit" type="submit">تأكيد الطلب عبر واتساب</button>
+<p class="note">بعد الضغط سيتم فتح واتساب برسالة الطلب جاهزة للإرسال.</p>
+</form>
+</div>
+</div>
 
-<footer>
-  <strong>BFTH BRICO</strong>
-  <p>خردوات عامة • توصيل إلى 69 ولاية</p>
-  <p>واتساب: 0774 334 689</p>
-</footer>
+<footer>© 2026 BFTH BRICO — جميع الحقوق محفوظة</footer>
 
+<script>
+const WHATSAPP="213774334689";
+
+const products=[
+{name:"منتج تجريبي 1",price:1100,img:"https://via.placeholder.com/600x500?text=BFTH+BRICO"},
+{name:"منتج تجريبي 2",price:1650,img:"https://via.placeholder.com/600x500?text=BFTH+BRICO"},
+{name:"منتج تجريبي 3",price:950,img:"https://via.placeholder.com/600x500?text=BFTH+BRICO"}
+];
+
+let cart=[];
+
+function renderProducts(){
+document.getElementById("products").innerHTML=products.map((p,i)=>`
+<div class="card">
+<img src="${p.img}" alt="${p.name}">
+<div class="card-body">
+<h3>${p.name}</h3>
+<div class="price">${p.price.toLocaleString()} دج</div>
+<button class="add" onclick="addToCart(${i})">أضف إلى السلة</button>
+</div></div>`).join("");
+}
+
+function addToCart(i){
+let found=cart.find(x=>x.i===i);
+if(found) found.q++;
+else cart.push({i,q:1});
+updateCount();
+openCart();
+}
+
+function updateCount(){
+document.getElementById("count").textContent=cart.reduce((s,x)=>s+x.q,0);
+}
+
+function openCart(){
+document.getElementById("cartModal").style.display="block";
+renderCart();
+}
+function closeCart(){document.getElementById("cartModal").style.display="none"}
+
+function renderCart(){
+const el=document.getElementById("cartItems");
+if(!cart.length){el.innerHTML='<div class="empty">السلة فارغة</div>';document.getElementById("total").textContent="0";return}
+let total=0;
+el.innerHTML=cart.map(x=>{
+let p=products[x.i], sub=p.price*x.q; total+=sub;
+return `<div class="order-item"><span>${p.name} × ${x.q}</span><b>${sub.toLocaleString()} دج</b></div>`;
+}).join("");
+document.getElementById("total").textContent=total.toLocaleString();
+}
+
+function sendOrder(e){
+e.preventDefault();
+if(!cart.length){alert("السلة فارغة");return}
+let name=document.getElementById("name").value;
+let phone=document.getElementById("phone").value;
+let wilaya=document.getElementById("wilaya").value;
+let address=document.getElementById("address").value;
+let total=cart.reduce((s,x)=>s+products[x.i].price*x.q,0);
+
+let msg="طلب جديد من متجر BFTH BRICO%0A%0A";
+cart.forEach(x=>{
+let p=products[x.i];
+msg+=`• ${p.name} × ${x.q} = ${(p.price*x.q).toLocaleString()} دج%0A`;
+});
+msg+=`%0Aالمجموع: ${total.toLocaleString()} دج%0A`;
+msg+=`%0Aالاسم: ${name}%0Aالهاتف: ${phone}%0Aالولاية: ${wilaya}%0Aالعنوان: ${address}`;
+
+window.open("https://wa.me/"+WHATSAPP+"?text="+msg,"_blank");
+}
+
+renderProducts();
+updateCount();
+</script>
 </body>
-  </html>
+</html>
